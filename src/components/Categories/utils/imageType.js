@@ -14,13 +14,13 @@ export const IMAGE_TYPES = [
         id: 4,
         name: "Babás",
         icon: nannies_icon,
-        color: '#6AAEC1'
+        color: '#DD2025'
     },
     {
         id: 5,
         name: "Playground",
         icon: playground_icon,
-        color: '#C5A04D'
+        color: '#6AAEC1'
     },
     {
         id: 6,

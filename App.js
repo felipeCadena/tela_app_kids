@@ -3,7 +3,6 @@ import { StyleSheet,
   Text, 
   View, 
   Image, 
-  TouchableOpacity,
   TextInput,
   FlatList,
   ScrollView
@@ -12,11 +11,15 @@ import TypeIcon from './src/components/TypeIcon';
 import { ICON_TYPES } from "./src/components/TypeIcon/utils/iconTypes";
 import { IMAGE_TYPES } from "./src/components/Categories/utils/imageType";
 import Categories from './src/components/Categories';
-
+import Icon from "react-native-vector-icons/FontAwesome";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/core";
 
 export default function App() {
+
   return (
     <ScrollView>
+      <Image style={styles.argolas} source={require('./assets/argolas.png')}/>
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>MARKETPLACE</Text>
@@ -24,8 +27,14 @@ export default function App() {
         <StatusBar style="auto" />
       </View>
 
-    <View>
-      <TextInput style={styles.input} placeholder="Ex.: Bábas"></TextInput>
+    <View style={styles.container_input}>
+      <TextInput style={styles.input} placeholder="Ex.: Bábas"/>
+      <Icon
+          name="search"
+          size={14}
+          color="#a8b6c8"
+          style={styles.search_icon}
+        />
     </View>
 
       <View style={styles.container_menu}>
@@ -43,17 +52,18 @@ export default function App() {
         columnWrapperStyle={{ justifyContent: "center" }}
         numColumns={4}
         showsHorizontalScrollIndicator={false}
+        scrollEnabled={false}
         />
       </View>
       
       <View style={styles.container_photo}>
-          <Text>FOTOGRÁFO EXEMPLE</Text>
+          <Image style={styles.photo_example} source={require('./assets/example.png')}/>
       </View>
 
       <View>
-        <Text>Mais Acessados</Text>
+        <Text style={styles.acess}>Mais Acessados</Text>
       </View>
-
+          <Image style={styles.details} source={require('./assets/details.png')}/>
       <View style={styles.container_menu}>
         <FlatList
         data={IMAGE_TYPES}
@@ -69,6 +79,7 @@ export default function App() {
         columnWrapperStyle={{ justifyContent: "center" }}
         numColumns={2}
         showsHorizontalScrollIndicator={false}
+        scrollEnabled={false}
         />
       </View>
     </View>
@@ -80,43 +91,81 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  argolas: {
+    width: 175,
+    height: 229,
+    position: 'absolute'
   },
   header: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 50
+    alignItems: 'center',
+    marginTop: 50,
+    marginBottom: 10,
   },
   title: {
     color: "#085E9F",
     fontWeight: "900",
-    fontSize: 18,
+    fontSize: 20,
+    left: 30
   },
   logo_paris: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
+    left: 80
+  },
+  container_input: {
+    width: "90%",
+    borderRadius: 1,
+    borderWidth: 1,
+    borderColor: "#ececec",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    height: 40,
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    paddingHorizontal: 150,
-    paddingVertical: 3,
-    fontSize: 18,
+    flex: 1,
+    color: "#a8b6c8",
+    fontSize: 14,
+    backgroundColor: "#ffffff",
+    padding: 10,
+  },
+  search_icon: {
+    position: "absolute",
+    right: 20,
+    marginRight: 10,
   },
   container_menu: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20
   },
   container_photo: {
-    color: 'white',
+    width: 370,
+    height: 128,
     backgroundColor: '#085E9F',
     borderRadius: 4,
-    paddingHorizontal: 150,
+    paddingHorizontal: 50,
     paddingVertical: 50,
-    marginTop: 40
-  }
+    marginTop: 20,
+    marginBottom: 20
+  },
+  photo_example: {
+    width: 260,
+    height: 118,
+    bottom: 45,
+    left: 5
+  },
+  acess: {
+    fontWeight: 'bold',
+    right: 130
+  },
+  details: {
+    width: 474,
+    height: 461,
+    position: 'absolute',
+    top: 390,
+  },
 });

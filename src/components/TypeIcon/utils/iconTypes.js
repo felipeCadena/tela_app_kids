@@ -24,7 +24,8 @@ export const ICON_TYPES = [
     },
     {
         id: 6,
-        name: "assistência médica",
+        name: `assistência 
+    médica`,
         icon: health_insurance_icon,
         color: '#081869'
     },
